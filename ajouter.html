@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ajouter Boisson</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header><h1>Ajouter Boisson</h1></header>
+
+<nav>
+<a href="index.html">Accueil</a>
+<a href="ajouter.html">Ajouter</a>
+<a href="produits.html">Produits</a>
+<a href="rapport.html">Rapport</a>
+<a href="apropos.html">A propos</a>
+<a href="Historique.html">historique</a>
+</nav>
+
+
+<select id="type">
+    <option value="entree">Entrée Stock</option>
+    <option value="sortie">Sortie Stock</option>
+</select>
+
+
+<section>
+<input type="text" id="nom" placeholder="Nom boisson">
+<input type="number" id="quantite" placeholder="Quantité">
+<input type="number" id="prix" placeholder="Prix unitaire">
+<br>
+<button onclick="ajouterProduit()">Ajouter</button>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Historique des Mouvements</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body onload="afficherHistorique()">
+
+<header>
+<h1>Historique des Mouvements</h1>
+</header>
+<nav>
+    <a href="index.html">Accueil</a>
+<a href="ajouter.html">Ajouter</a>
+<a href="produits.html">Produits</a>
+<a href="rapport.html">Rapport</a>
+<a href="apropos.html">A propos</a>
+<a href="Historique.html">historique</a>
+</nav>
+
+<section>
+<table border="1" width="100%" cellpadding="10">
+<thead>
+<tr>
+<th>Boisson</th>
+<th>Type</th>
+<th>Quantité</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody id="tableHistorique"></tbody>
+</table>
+</section>
+
+<script src="script.js"></script>
+
+<script>
+function afficherHistorique(){
+    let historique = getHistorique();
+    let table = document.getElementById("tableHistorique");
+    table.innerHTML="";
+
+    historique.forEach(h=>{
+        table.innerHTML += `
+        <tr>
+        <td>${h.nom}</td>
+        <td>${h.type}</td>
+        <td>${h.quantite}</td>
+        <td>${h.date}</td>
+        </tr>
+        `;
+    });
+}
+</script>
+
+</body>
+</html>

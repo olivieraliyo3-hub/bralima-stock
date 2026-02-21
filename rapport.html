@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rapport Officiel - Bralima Kisangani</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<nav>
+    <a href="index.html">Accueil</a>
+<a href="ajouter.html">Ajouter</a>
+<a href="produits.html">Produits</a>
+<a href="rapport.html">Rapport</a>
+<a href="apropos.html">A propos</a>
+<a href="Historique.html">historique</a>
+</nav>
+
+<!-- Bibliothèque PDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<style>
+
+/* Image plein écran */
+body {
+    margin: 0;
+    background: url("fond.jpg") no-repeat center center/cover;
+}
+
+/* Conteneur rapport */
+.rapport-container {
+    background: white;
+    width: 90%;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+/* Signature */
+.signature-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+}
+
+.signature-box {
+    width: 40%;
+    text-align: center;
+}
+
+.line {
+    margin-top: 60px;
+    border-top: 2px solid black;
+}
+
+/* Impression */
+@media print {
+    nav, .btn-print, .btn-pdf {
+        display: none;
+    }
+    body {
+        background: white;
+    }
+}
+
+</style>
+</head>
+
+<body onload="afficherProduits()">
+
+<header style="text-align:center; background:#002f6c; padding:20px; color:white;">
+    <img src="logo.png" width="120"><br>
+    <h1>RAPPORT OFFICIEL DE STOCK</h1>
+    <h3>BRALIMA - Kisangani</h3>
+</header>
+
+<p><strong>Numéro Rapport :</strong> 
+<script>
+let numero = "BRALIMA-KIS-" + Date.now();
+document.write(numero);
+</script>
+</p>
+
+
+<nav style="text-align:center; background:#003f88; padding:10px;">
+<a href="index.html" style="color:white; margin:15px;">Accueil</a>
+<a href="produits.html" style="color:white; margin:15px;">Produits</a>
+</nav>
+
+<section class="rapport-container" id="rapportContent">
+
+<h2 style="text-align:center;">Résumé Général du Stock</h2>
+
+<table width="100%" border="1" cellspacing="0" cellpadding="10">
+<thead style="background:#002f6c; color:white;">
+<tr>
+<th>Nom</th>
+<th>Quantité</th>
+<th>Prix</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody id="listeProduits"></tbody>
+</table>
+<h2>Graphique des Stocks</h2>
+<canvas id="stockChart"></canvas>
+
+
+<h3 style="text-align:right;">Stock Total : <span id="stockTotal"></span></h3>
+<h3 style="text-align:right;">Valeur Totale : $<span id="valeurTotale"></span></h3>
+
+<p>Date : <script>document.write(new Date().toLocaleDateString());</script></p>
+
+<!-- Signature -->
+<div class="signature-section">
+
+<div class="signature-box">
+<p>Le Gérant</p>
+<div class="line"></div>
+<p>Signature</p>
+</div>
+
+<div class="signature-box">
+<p>Le Directeur Général (DG)</p>
+<div class="line"></div>
+<p>Signature</p>
+</div>
+
+<div style="text-align:center; margin-top:40px;">
+<img src="cachet.png" width="120">
+<p>Cachet Officiel BRALIMA</p>
+</div>
+
+</div>
+
+</section>
+
+<div style="text-align:center; margin-bottom:40px;">
+<button class="btn-print" onclick="window.print()" style="padding:10px 20px;">Imprimer</button>
+<button class="btn-pdf" onclick="generatePDF()" style="padding:10px 20px;">Exporter en PDF</button>
+</div>
+
+<script src="script.js"></script>
+
+<script>
+function generatePDF() {
+    const element = document.getElementById("rapportContent");
+    html2pdf().from(element).save("Rapport_Stock_Bralima.pdf");
+}
+</script>
+
+</body>
+</html>
