@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     background: linear-gradient(to right, #004e92, #000428);
     color: white;
-    background-image: url("images/tr.jpg");
+    background-image: url("tr.jpg");
 }
 
 header {
@@ -103,3 +103,4 @@ th {
     border-radius: 5px;
     cursor: pointer;
 }
+
